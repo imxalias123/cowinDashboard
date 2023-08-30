@@ -1,0 +1,26 @@
+/* Write your CSS here */
+.container {
+  background-color: #161625;
+  min-height: 100vh;
+  padding-left: 60px;
+  padding-top: 30px;
+  font-family: 'roboto';
+}
+.logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+.logo-heading {
+  color: #2cc6c6;
+}
+.para {
+  color: #cbd5e1;
+  font-size: 30px;
+}
+.website-logo {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
