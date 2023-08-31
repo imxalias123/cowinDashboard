@@ -1,6 +1,11 @@
 /* Write your CSS here */
 .sub-parts {
   background-color: #1c1c2b;
+  padding: 30px;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
 }
 .Coverage-heading {
   color: #94a3b8;

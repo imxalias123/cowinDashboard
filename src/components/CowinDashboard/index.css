@@ -24,3 +24,20 @@
 
   align-items: center;
 }
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 60px;
+}
+.failure-img {
+  width: 40%;
+}
+.failure-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.failure-heading {
+  color: #ffffff;
+}

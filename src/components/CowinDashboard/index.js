@@ -3,6 +3,8 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import VaccinationCoverage from '../VaccinationCoverage'
+import VaccinationByGender from '../VaccinationByGender'
+import VaccinationByAge from '../VaccinationByAge'
 import './index.css'
 
 const apiStatusConstants = {
@@ -33,8 +35,8 @@ class CowinDashboard extends Component {
     const updatedData = {
       last7DaysVaccination: fetchedData.last_7_days_vaccination.map(each => ({
         vaccineDate: each.vaccine_date,
-        dose1: each.dose1,
-        dose2: each.dose2,
+        dose1: each.dose_1,
+        dose2: each.dose_2,
       })),
       vaccinationByAge: fetchedData.vaccination_by_age.map(each => ({
         age: each.age,
@@ -60,14 +62,35 @@ class CowinDashboard extends Component {
 
   renderVaccinationStatus = () => {
     const {data} = this.state
-    return <VaccinationCoverage data={data.last7DaysVaccination} />
+    return (
+      <div className="graph-container">
+        <VaccinationCoverage data={data.last7DaysVaccination} />
+        <VaccinationByGender data={data.vaccinationByGender} />
+        <VaccinationByAge data={data.vaccinationByAge} />
+      </div>
+    )
   }
+
+  renderFailure = () => (
+    <div className="failure-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/api-failure-view.png"
+        alt="failure view"
+        className="failure-img"
+      />
+      <h1 className="failure-heading">Something went wrong</h1>
+    </div>
+  )
 
   renderApiStatus = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.success:
         return this.renderVaccinationStatus()
+      case apiStatusConstants.inProgress:
+        return this.renderLoading()
+      case apiStatusConstants.failure:
+        return this.renderFailure()
       default:
         return null
     }
