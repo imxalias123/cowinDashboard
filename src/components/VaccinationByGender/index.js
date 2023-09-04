@@ -8,7 +8,7 @@ const VaccinationByGender = props => {
       <h1 className="Coverage-heading">Vaccination by gender</h1>
 
       <PieChart
-        width="100%"
+        width={1000}
         height={300}
         margin={{
           top: 45,
@@ -18,8 +18,8 @@ const VaccinationByGender = props => {
           cx="50%"
           cy="30%"
           data={data}
-          startAngle={0}
-          endAngle={180}
+          startAngle={180}
+          endAngle={0}
           innerRadius="40%"
           outerRadius="70%"
           dataKey="count"
